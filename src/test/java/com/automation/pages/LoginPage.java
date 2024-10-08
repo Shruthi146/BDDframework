@@ -28,7 +28,7 @@ public class LoginPage {
 		try {
 			return driver.getTitle();
 		}catch (Exception e) {
-			LOG.error("Error while clicking on signin");
+			LOG.error("Error while getting login page title");
 			throw e;
 		}		
 	}
@@ -37,7 +37,7 @@ public class LoginPage {
 		try {
 			driver.findElement(ObjectRepository.LoginPageElements.SignupLogin).click();
 		}catch (Exception e) {
-			LOG.error("Error while clicking on signin");
+			LOG.error("Error while clicking on signup");
 			throw e;
 		}		
 	}

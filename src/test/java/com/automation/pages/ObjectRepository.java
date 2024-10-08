@@ -96,6 +96,37 @@ public class ObjectRepository {
 		public static By Submit = By.xpath("//input[@name='submit']");
 		
 		public static By SuccessMsg = By.xpath("//div[@class='status alert alert-success']");
+		
+		public static By HomePage = By.xpath("//span[normalize-space()='Home']");
+	}
+	
+	public static class ProductsElements {
+		
+		public static By Products = By.xpath("//a[@href='/products']");
+		public static By viewProduct = By.xpath("(//a[contains(text(),'View Product')])[1]");
+		
+	}
+	
+	public static class SearchProductElements {
+		
+		public static By SearchInput = By.xpath("//input[@id='search_product']");
+		public static By SearchButton = By.xpath("//button[@id='submit_search']");
+		public static By SearchedProducts = By.xpath("//h2[normalize-space()='Searched Products']");
+		
+		
+		public static By SearchedProduct(String value) {
+			By xpath = By.xpath("//div[@class='productinfo text-center']//p[contains(text(),'"+value+"')]");
+			return xpath;	
+		}
+	}
+	
+	public static class SubscriptionElements {
+		
+		
+		public static By subscription = By.xpath("//h2[normalize-space()='Subscription']");
+		public static By subscriptionInput = By.xpath("//input[@id='susbscribe_email']");
+		public static By subscribeButton = By.xpath("//button[@id='subscribe']");
+		public static By subsciptionSuccesMsg = By.xpath("");
 	}
 
 }

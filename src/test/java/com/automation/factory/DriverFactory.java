@@ -1,5 +1,7 @@
 package com.automation.factory;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -8,7 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverFactory {
 	
-	public WebDriver driver;
+	//public WebDriver driver;
 		
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
 	
@@ -20,6 +22,7 @@ public class DriverFactory {
 			//WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--remote-allow-origins=*");
+	//		options.addArguments("--disable-notifications");
 			tlDriver.set(new ChromeDriver());
 		}
 		else if(browser.equals("firefox")) {
@@ -30,7 +33,7 @@ public class DriverFactory {
 		{
 			System.out.println("Please pass the correct browser value : " + browser);
 		}
-		
+		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		getDriver().manage().deleteAllCookies();
 		getDriver().manage().window().maximize();
 		return getDriver();

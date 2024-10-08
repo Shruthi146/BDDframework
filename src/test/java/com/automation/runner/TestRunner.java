@@ -1,22 +1,23 @@
 package com.automation.runner;
 
-import org.junit.runner.RunWith;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
 
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
-
-@RunWith(Cucumber.class)
 @CucumberOptions(
 		features = {"src\\test\\resources\\features"},
 		glue = {"com.automation.steps"},
-		plugin = {"pretty","html:target/cucumber-reports/CucumberTestReport.html"},
-		tags= "@Test10",
+		plugin = {
+				"pretty",
+				"html:target/cucumber-reports/CucumberTestReport.html",
+				"json:target/Reports/cucumber.json,",
+				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
+		tags= "@Test3",
 //		dryRun=true,
 		monochrome=true
 
 )
 
 
-public class TestRunner {
+public class TestRunner extends AbstractTestNGCucumberTests{
 
 }

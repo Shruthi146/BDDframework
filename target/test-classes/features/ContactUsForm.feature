@@ -1,6 +1,6 @@
 Feature: Contact Us Form
 
-@Test10
+@Test6
 Scenario Outline: Contct us form
 Given Launch browser
 When Navigate to url 'http://automationexercise.com'
@@ -11,7 +11,7 @@ And Enter "<Name>" "<Email>" "<Subject>" "<Message>"
 And Upload file
 And Click Submit button
 And Click OK button
-Then Verify success message 'Success! Your details have been submitted successfully.' is visible
+Then Verify success message is visible
 And Click Home button
 Then Verify that home page is visible successfully
 

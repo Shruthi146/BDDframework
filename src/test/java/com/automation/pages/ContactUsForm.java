@@ -1,5 +1,7 @@
 package com.automation.pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
@@ -38,7 +40,9 @@ private WebDriver driver;
 	
 	public void click_submit_button() {
 		try {
-			Thread.sleep(2000);
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+			
 			  driver.findElement(ObjectRepository.ContactUsForm.Submit).click();
 			  
 		}catch (Exception e) {
@@ -61,6 +65,16 @@ private WebDriver driver;
 			WebElement successMsg =  driver.findElement(ObjectRepository.ContactUsForm.SuccessMsg);
 			successMsg.isDisplayed();
 			return successMsg.getText();
+			  
+		}catch (Exception e) {
+			LOG.error("Error in Homepage visible");
+			throw e;
+		}	
+	}
+	
+	public void click_HomePage() {
+		try {		
+			  driver.findElement(By.xpath("//span[normalize-space()='Home']")).click();
 			  
 		}catch (Exception e) {
 			LOG.error("Error in Homepage visible");

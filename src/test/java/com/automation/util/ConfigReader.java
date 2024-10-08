@@ -21,6 +21,7 @@ public class ConfigReader {
 					+ "resources" + File.separator + "conf" + File.separator + "config.properties");
 			prop.load(ip);
 			
+			
 		} catch (FileNotFoundException e) {
 			
 			e.printStackTrace();

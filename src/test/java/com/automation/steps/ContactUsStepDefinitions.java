@@ -1,16 +1,15 @@
 package com.automation.steps;
 
+import org.testng.Assert;
+
 import com.automation.factory.DriverFactory;
 import com.automation.pages.ContactUsForm;
-import com.automation.pages.ObjectRepository;
 
 import io.cucumber.java.en.Then;
-import junit.framework.Assert;
 
-public class stepDefinitions {
+public class ContactUsStepDefinitions {
 	
-	ContactUsForm contactUsForm = new ContactUsForm(DriverFactory.getDriver());
-	
+	private ContactUsForm contactUsForm = new ContactUsForm(DriverFactory.getDriver());
 
 	@Then("Click on Contact Us button")
 	public void click_on_contact_us_button() {
@@ -37,17 +36,20 @@ public class stepDefinitions {
 		contactUsForm.click_ok_button();
 	}
 	
-	@Then("Verify success message {string} is visible")
-	public void verify_success_message_is_visible(String string) {
-		String act_msg = string;
+	@Then("Verify success message is visible")
+	public void verify_success_message_is_visible() {
+		String act_msg = contactUsForm.verify_success_message_is_visible();
 		contactUsForm.verify_success_message_is_visible();
-		String exp_msg = string;
+		String exp_msg = "Success! Your details have been submitted successfully.";
+	
+		Assert.assertEquals(act_msg, exp_msg);
 
 	}
 	
 	@Then("Click Home button")
 	public void click_home_button() {
-	    
+		contactUsForm.click_HomePage();
 	}
+	
 
 }
